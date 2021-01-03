@@ -122,3 +122,6 @@ dist
 *.code-workspace
 
 # End of https://www.toptal.com/developers/gitignore/api/vscode,node
+
+# JS folder to skip uploading Three again
+js/
