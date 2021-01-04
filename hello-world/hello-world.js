@@ -36,12 +36,31 @@ function main() {
     const cube = new THREE.Mesh( geometry, material );
     scene.add( cube );
 
+    // Responsive design
+
+    function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+            renderer.setSize(width, height, false);
+        }
+        return needResize;
+    } 
+
     function render(time) {
         time *= 0.001;
         cube.rotation.x = time;
         cube.rotation.y = time;
         renderer.render(scene, camera);
 
+        if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+        }
+        
         requestAnimationFrame(render);
     }
 
