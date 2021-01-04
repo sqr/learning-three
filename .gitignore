@@ -125,3 +125,5 @@ dist
 
 # JS folder to skip uploading Three again
 js/
+
+.DS_Store
